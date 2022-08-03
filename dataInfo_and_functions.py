@@ -51,7 +51,35 @@ esacci_info = dict(full_path = ['/g/data/w97/ad9701/ESACCI/3_unzip/' + str(i) + 
                    rename_latlon = False,
                    mon_file = 'esacci_monthly_1979_2020.nc')
 
-alldata_dict = dict(mswep = mswep_info, chirps = chirps_info, agcd = agcd_info, gleam = gleam_info, awra = awra_info, esacci = esacci_info)
+# all variables of interest
+# ro: runoff (mm)
+# sm: soil moisture (1m depth)
+# e: Evaporation
+
+era5land_info = dict(full_path = '/g/data/w97/ad9701/p_prob_analysis/era5-land_daily/e/',
+                   file_name = 'e_era5-land_oper_sfc_*.nc',
+                   varname = 'e',
+                   lat_slice = slice(-10, -44),
+                   lon_slice = slice(112, 154),
+                   units = 'mm',
+                   rename_latlon = True,
+                   mon_file = '')
+
+
+alldata_dict = dict(mswep = mswep_info, chirps = chirps_info, agcd = agcd_info, gleam = gleam_info, awra = awra_info, esacci = esacci_info, era5land = era5land_info)
+
+# GLEAM variables
+# E: Actual evaporation
+# Eb: Bare soil evaporation
+# Ei: Interception loss
+# Ep: Potential evaporation
+# Es: snow sublimation
+# Et: transpiration
+# Ew: Open-water evaporation
+# S: Evaporative stress
+# SMroot: rootzone soil mositure
+# SMsurf: surface soil moisture
+
 
 import xarray as xr
 import numpy as np
